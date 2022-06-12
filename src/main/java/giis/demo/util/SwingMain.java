@@ -7,6 +7,7 @@ import controladores.*;
 import controladores.Informacion_envioController;
 import modelos.*;
 import vistas.ConfirmarEntregasView;
+import vistas.InformacionEnviosRepartidorView;
 import vistas.Informacion_envioView;
 
 import javax.swing.BoxLayout;
@@ -103,6 +104,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnConfirmarEntregas);
+		
+		JButton btnNewButton = new JButton("Informacion envio para repartidores");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InformacionEnviosRepartidorController controller = 
+						new InformacionEnviosRepartidorController(new InformacionEnviosRepartidorModel(), new InformacionEnviosRepartidorView(), spinnerRepartidor.getValue().toString());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnNewButton);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		

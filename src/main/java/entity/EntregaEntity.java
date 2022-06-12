@@ -7,6 +7,7 @@ public class EntregaEntity {
 	private int nEntregas;
 	private boolean Entregado;
 	private boolean Aceptado;
+	
 	public int getIdRepartidor() {
 		return idRepartidor;
 	}
