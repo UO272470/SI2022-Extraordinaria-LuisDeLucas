@@ -5,7 +5,10 @@ import javax.swing.JFrame;
 
 import controladores.*;
 import controladores.Informacion_envioController;
+import controladores.CalculoTarifasController;
 import modelos.*;
+import modelos.CalculoTarifasModel;
+import vistas.CalculoTarifasView;
 import vistas.ConfirmarEntregasView;
 import vistas.InformacionEnviosRepartidorView;
 import vistas.Informacion_envioView;
@@ -114,6 +117,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnTarifas = new JButton("Calculo tarifas de paquetes");
+		btnTarifas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CalculoTarifasController controller = 
+						new CalculoTarifasController(new CalculoTarifasView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnTarifas);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
