@@ -114,6 +114,9 @@ public class Informacion_envioController {
 				String nombreAlmacen = view.getComboBoxOficina().getSelectedItem().toString();
 				model.borraEntregaCreaDeposito(view.getTxtIdpaquete().getText(), view.getTxtDestinatario().getText(),  nombreAlmacen);
 			}
+			this.initController();
+			this.initView();
+			view.getFrame().setVisible(false);
 		}
 	
 }
