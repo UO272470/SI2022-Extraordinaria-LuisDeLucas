@@ -12,11 +12,13 @@ INSERT INTO "Cliente" ("idCliente", "Nombre", "Direccion", "Ciudad", "Provincia"
 DELETE FROM "Paquete";
 INSERT INTO "Paquete" ("idPaquete", "Peso", "Precio") VALUES
 	(1, 5, 25),
-	(2, 2, 15);
+	(2, 2, 15),
+	(3, 1, 4);
 	
 DELETE FROM "Entrega";
 INSERT INTO "Entrega" ("idRepartidor","idCliente","idPaquete","nEntregas","Entregado","Aceptado") VALUES
-	(1, 1, 1,0, FALSE, FALSE);
+	(1, 1, 1,0, FALSE, TRUE),
+	(1, 1, 3, 0, FALSE, TRUE);
 	
 DELETE FROM "Deposita";
 INSERT INTO "Deposita" ("idPaquete", "idRepartidor", "idAlmacen", "Depositado") VALUES

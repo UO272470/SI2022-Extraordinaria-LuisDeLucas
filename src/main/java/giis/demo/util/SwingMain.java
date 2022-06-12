@@ -3,14 +3,20 @@ package giis.demo.util;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import controladores.*;
 import controladores.Informacion_envioController;
-import modelos.Informacion_envioModel;
+import modelos.*;
+import vistas.ConfirmarEntregasView;
 import vistas.Informacion_envioView;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
 
 /**
  * Punto de entrada principal que incluye botones para la ejecucion de las pantallas 
@@ -22,6 +28,8 @@ import java.awt.event.ActionEvent;
 public class SwingMain {
 
 	private JFrame frame;
+	private final JPanel panel = new JPanel();
+	private JSpinner spinnerRepartidor;
 
 	/**
 	 * Launch the application.
@@ -52,7 +60,7 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
-		frame.setBounds(0, 0, 287, 185);
+		frame.setBounds(0, 0, 451, 245);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		
@@ -85,8 +93,27 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnInfoEnvio);
+		
+		JButton btnConfirmarEntregas = new JButton("Confirmar entregas");
+		btnConfirmarEntregas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConfirmarEntregasController controller = 
+						new ConfirmarEntregasController(new ConfirmarEntregasModel(), new ConfirmarEntregasView(), spinnerRepartidor.getValue().toString());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnConfirmarEntregas);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		spinnerRepartidor = new JSpinner();
+		spinnerRepartidor.setBounds(370, 11, 55, 20);
+		panel.add(spinnerRepartidor);
+		
+		JLabel IdRepartidor = new JLabel("Id Repartidor");
+		IdRepartidor.setBounds(296, 14, 69, 14);
+		panel.add(IdRepartidor);
 	}
 
 	public JFrame getFrame() { return this.frame; }
-	
 }
