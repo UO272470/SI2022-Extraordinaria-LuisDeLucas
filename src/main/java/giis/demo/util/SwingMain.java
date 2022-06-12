@@ -2,6 +2,11 @@ package giis.demo.util;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+
+import controladores.Informacion_envioController;
+import modelos.Informacion_envioModel;
+import vistas.Informacion_envioView;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -70,6 +75,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
+		
+		JButton btnInfoEnvio = new JButton("Informacion envio");
+		btnInfoEnvio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Informacion_envioController controller = 
+						new Informacion_envioController(new Informacion_envioModel(), new Informacion_envioView());
+				controller.initController();
+			}
+		});
+		frame.getContentPane().add(btnInfoEnvio);
 	}
 
 	public JFrame getFrame() { return this.frame; }
