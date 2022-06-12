@@ -21,6 +21,9 @@ public class Informacion_envioView {
 	private JCheckBox chckbxOficina;
 	private JCheckBox chckbxCasa;
 	private JTextField textFieldPeso;
+	private JTextField txtIdpaquete;
+	private JButton btnBuscar;
+	private JButton btnModificar;
 	/**
 	 * Launch the application.
 	 */
@@ -91,7 +94,7 @@ public class Informacion_envioView {
 		txtProvincia.setColumns(10);
 		
 		btnEnvio = new JButton("Confirmar envio");
-		btnEnvio.setBounds(265, 200, 159, 50);
+		btnEnvio.setBounds(291, 200, 133, 50);
 		frame.getContentPane().add(btnEnvio);
 		
 		textFieldPeso = new JTextField();
@@ -99,6 +102,20 @@ public class Informacion_envioView {
 		textFieldPeso.setBounds(185, 154, 86, 20);
 		frame.getContentPane().add(textFieldPeso);
 		textFieldPeso.setColumns(10);
+		
+		txtIdpaquete = new JTextField();
+		txtIdpaquete.setText("IdPaquete");
+		txtIdpaquete.setBounds(6, 230, 86, 20);
+		frame.getContentPane().add(txtIdpaquete);
+		txtIdpaquete.setColumns(10);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(102, 229, 89, 23);
+		frame.getContentPane().add(btnBuscar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(102, 200, 89, 23);
+		frame.getContentPane().add(btnModificar);
 	}
 
 	public JFrame getFrame() {
@@ -180,6 +197,28 @@ public class Informacion_envioView {
 	public void setTextFieldPeso(JTextField textFieldPeso) {
 		this.textFieldPeso = textFieldPeso;
 	}
-	
-	
+
+	public JTextField getTxtIdpaquete() {
+		return txtIdpaquete;
+	}
+
+	public void setTxtIdpaquete(JTextField txtIdpaquete) {
+		this.txtIdpaquete = txtIdpaquete;
+	}
+
+	public JButton getBtnBuscar() {
+		return btnBuscar;
+	}
+
+	public void setBtnBuscar(JButton btnBuscar) {
+		this.btnBuscar = btnBuscar;
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public void setBtnModificar(JButton btnModificar) {
+		this.btnModificar = btnModificar;
+	}
 }

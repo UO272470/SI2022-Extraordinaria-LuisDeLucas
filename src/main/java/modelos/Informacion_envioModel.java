@@ -5,7 +5,10 @@ import java.util.List;
 
 import entity.AlmacenEntity;
 import entity.ClienteEntity;
+import entity.DepositadoEntity;
+import entity.EntregaEntity;
 import entity.PaqueteEntity;
+import entity.RecogeEntity;
 import giis.demo.util.ApplicationException;
 import giis.demo.util.Database;
 
@@ -51,5 +54,43 @@ public class Informacion_envioModel {
 		
 		db.executeUpdate(sqlDepostia, idPaquete, idAlmacen);
 		db.executeUpdate(sqlRecoge, idCliente, idAlmacen, idPaquete);
+	}
+	
+	
+	public List<EntregaEntity> buscarPaqueteCasa(String idPaquete) {
+		return db.executeQueryPojo(EntregaEntity.class, "SELECT * FROM Entrega WHERE idPaquete = ?", idPaquete);
+	}
+	
+	public List<RecogeEntity> buscarPaqueteOficina(String idPaquete) {
+		return db.executeQueryPojo(RecogeEntity.class, "SELECT * FROM Recoge WHERE idPaquete = ?", idPaquete);
+	}
+	
+	public List<ClienteEntity> buscarCliente(String idCliente) {
+		return db.executeQueryPojo(ClienteEntity.class,"SELECT * FROM Cliente WHERE idCliente = ?" ,idCliente );
+	}
+	
+	public void updateCliente(String n, String d, String C, String P, String cliente) {
+		db.executeUpdate("UPDATE Cliente SET Nombre = ?, Direccion = ?, Ciudad = ?, Provincia = ? WHERE idCliente = ?",
+				n, d, C, P, cliente);
+	}
+	
+	public void borraEntregaCreaDeposito(String idPaquete, String nombre, String nombreAlmacen) {
+		int peso = db.executeQueryPojo(PaqueteEntity.class, "SELECT * FROM Paquete WHERE idPaquete = ?", idPaquete).get(0).getPeso();
+		db.executeUpdate("DELETE FROM Entrega WHERE idPaquete = ?", idPaquete);
+		
+		formalizarEnvioAlmacen(nombre, peso, nombreAlmacen);
+	}
+	
+	public void borraDeposito(String idPaquete) {
+		db.executeUpdate("DELETE FROM Deposita WHERE idPaquete = ?", idPaquete);
+		db.executeUpdate("DELETE FROM Recoge WHERE idPaquete = ?", idPaquete);
+	}
+	
+	public void formalizaEnvioCasaActualiza(String idPaquete, String nombre) {
+		int idCliente = db.executeQueryPojo(ClienteEntity.class, "SELECT * FROM Cliente WHERE Nombre = ?;", nombre).get(0).getIdCliente();	
+		String sqlEntrega = "INSERT INTO \"Entrega\" (\"idCliente\",\"idPaquete\",\"nEntregas\",\"Entregado\",\"Aceptado\") VALUES "
+				+ " (?, ?, 0, FALSE, FALSE)";
+		
+		db.executeUpdate(sqlEntrega, idCliente, idPaquete);
 	}
 }
