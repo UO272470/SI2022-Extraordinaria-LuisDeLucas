@@ -13,12 +13,14 @@ DELETE FROM "Paquete";
 INSERT INTO "Paquete" ("idPaquete", "Peso", "Precio") VALUES
 	(1, 5, 25),
 	(2, 2, 15),
-	(3, 1, 4);
+	(3, 1, 4),
+	(4, 3, 6);
 	
 DELETE FROM "Entrega";
 INSERT INTO "Entrega" ("idRepartidor","idCliente","idPaquete","nEntregas","Entregado","Aceptado") VALUES
 	(1, 1, 1,0, FALSE, TRUE),
-	(1, 1, 3, 0, FALSE, TRUE);
+	(1, 1, 3, 0, FALSE, TRUE),
+	(1, 1, 4, 0, FALSE, FALSE);
 	
 DELETE FROM "Deposita";
 INSERT INTO "Deposita" ("idPaquete", "idRepartidor", "idAlmacen", "Depositado") VALUES

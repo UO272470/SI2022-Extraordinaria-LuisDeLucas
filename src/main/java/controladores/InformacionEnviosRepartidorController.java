@@ -30,6 +30,9 @@ public class InformacionEnviosRepartidorController {
 	public void initController() {
 		view.getBtnInfo().addActionListener(e -> SwingUtil.exceptionWrapper(() -> getInfo()));
 		
+		view.getBtnAceptar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> aceptar()));
+		view.getBtnRechazar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> rechazar()));
+		
 		view.getBtnConfirmar().addActionListener(e -> SwingUtil.exceptionWrapper(() -> cerrar()));
 	}
 
@@ -58,6 +61,14 @@ public class InformacionEnviosRepartidorController {
 		view.getLblProvincia().setText(InfoCliente.getProvincia());
 		view.getLblPeso().setText(Integer.toString(InfoPaquete.getPeso()));
 		view.getLblPrecio().setText(Integer.toString(InfoPaquete.getPrecio()));
+	}
+	
+	private void aceptar() {
+		model.setAceptado(view.getTable().getModel().getValueAt(1, view.getTable().getSelectedRow()).toString());
+	}
+	
+	private void rechazar() {
+		model.setRechazado(view.getTable().getModel().getValueAt(1, view.getTable().getSelectedRow()).toString());
 	}
 	
 	public void cerrar() {

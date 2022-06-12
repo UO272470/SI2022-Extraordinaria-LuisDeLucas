@@ -22,6 +22,8 @@ public class InformacionEnviosRepartidorView {
 	private JButton btnInfo;
 	private JLabel lblNewLabel_2;
 	private JLabel lblPrecio;
+	private JButton btnAceptar;
+	private JButton btnRechazar;
 	/**
 	 * Launch the application.
 	 */
@@ -116,6 +118,14 @@ public class InformacionEnviosRepartidorView {
 		lblPrecio = new JLabel("");
 		lblPrecio.setBounds(266, 217, 81, 14);
 		frame.getContentPane().add(lblPrecio);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(10, 300, 89, 23);
+		frame.getContentPane().add(btnAceptar);
+		
+		btnRechazar = new JButton("Rechazar");
+		btnRechazar.setBounds(170, 300, 89, 23);
+		frame.getContentPane().add(btnRechazar);
 	}
 
 	public JFrame getFrame() {
@@ -196,6 +206,22 @@ public class InformacionEnviosRepartidorView {
 
 	public void setLblPrecio(JLabel lblPrecio) {
 		this.lblPrecio = lblPrecio;
+	}
+
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	public JButton getBtnRechazar() {
+		return btnRechazar;
+	}
+
+	public void setBtnRechazar(JButton btnRechazar) {
+		this.btnRechazar = btnRechazar;
 	}
 	
 	

@@ -13,7 +13,7 @@ public class InformacionEnviosRepartidorModel {
 	
 	
 	public List<EntregaEntity> getEntregas(String repartidor) {
-		String sql = "SELECT idCliente, idPaquete FROM Entrega WHERE idRepartidor = ?";
+		String sql = "SELECT * FROM Entrega WHERE idRepartidor = ? AND Entregado = FALSE";
 		
 		return db.executeQueryPojo(EntregaEntity.class, sql, repartidor);
 	}
@@ -28,5 +28,12 @@ public class InformacionEnviosRepartidorModel {
 		String sql = "Select * FROM Paquete WHERE idPaquete = ?";
 		
 		return db.executeQueryPojo(PaqueteEntity.class, sql, idPaquete);
+	}
+	
+	public void setAceptado(String idPaquete) {
+		db.executeUpdate("UPDATE ENTREGA SET Aceptado = TRUE WHERE idPaquete = ?", idPaquete);
+	}
+	public void setRechazado(String idPaquete) {
+		db.executeUpdate("UPDATE ENTREGA SET Aceptado = FALSE WHERE idPaquete = ?", idPaquete);
 	}
 }
