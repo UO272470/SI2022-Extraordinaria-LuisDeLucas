@@ -35,7 +35,8 @@ public class ConfirmarEntregasModel {
 	public void entregadoFallido(String paquete) {
 		int nEntregas = db.executeQueryPojo(EntregaEntity.class,
 				"SELECT * FROM Entrega WHERE idPaquete = ?", paquete).get(0).getnEntregas();
-		if(nEntregas >= 2) {
+		
+		if(nEntregas <= 2) {
 			db.executeUpdate("UPDATE Entrega SET nEntregas = nEntregas + 1 WHERE idPaquete = ? ;", paquete);
 		} else {
 			int peso = db.executeQueryPojo(PaqueteEntity.class, "SELECT * FROM Paquete WHERE idPaquete = ?", paquete).get(0).getPeso();

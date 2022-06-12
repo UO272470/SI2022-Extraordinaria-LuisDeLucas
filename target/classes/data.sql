@@ -4,7 +4,7 @@ INSERT INTO "Almacen" ("idAlmacen" , "Nombre", "Direccion", "Ciudad", "Provincia
 	(1, "Oviedo", "C/Prueba1", "Oviedo", "Asturias"),
 	(2, "Gijon", "C/Prueba2", "Gijon", "Asturias"),
 	(3, "Madrid", "C/Prueba3", "Madrid", "Madrid"),
-	(4, "Barcelona", "C/pruebas", "Barcelona", "Barcelona";
+	(4, "Barcelona", "C/pruebas", "Barcelona", "Barcelona");
 	
 DELETE FROM "Cliente";
 INSERT INTO "Cliente" ("idCliente", "Nombre", "Direccion", "Ciudad", "Provincia") VALUES
